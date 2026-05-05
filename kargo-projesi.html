@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kargo Projesi</title>
+    <style>
+        /* JS PERSONAL İNFO CSS */
+        #card { 
+        width : 100%;
+        height : 70%;
+        background-color: #ede0d4;
+        padding: 20px;
+        place-items: right;
+        border-radius : 20px;
+        
+        }
+
+        #card-header {
+            border-bottom: 2px solid black;
+            padding-bottom: 15px;
+        }
+
+        /* ---------------------- */
+        
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: arial;
+        }
+
+    
+            
+    
+        
+        header{
+            overflow: hidden;
+            width: 100%;
+            height : 100px;
+            background-color: #dee2e6;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            box-shadow: -10px 1px 10px;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            
+        }
+        li{
+            margin-right: 15px;
+        }
+
+        main{
+
+            padding: 20px;
+            width: 100%;
+            
+            height: 100%;
+            display: flex;
+            justify-content: left;
+            
+            
+            background-color: #8C5A3C; 
+        }
+        article{
+           /*  background-color: #8C5A3C; */
+          
+            background-color: #8C5A3C;
+            margin-left: 30px;
+            width : 800px;
+            height : 500px;
+            overflow: hidden;
+            padding-top: 20px;
+            padding: 20px;
+            display: flex;
+            
+            align-items: center;
+            flex-direction: column;
+            gap : 40px;
+            
+        }
+        
+
+        #person-info{
+            border-radius: 20px;
+            background-color: #edede9;
+            width: 400px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            overflow: hidden;
+            
+        }
+        .input-info{
+            margin-top: -15px;
+            margin-bottom: 15px;
+            height: 50px;
+            border-radius: 5px;
+            border: 2px solid black;
+            padding: 2px;
+            padding-inline: 10px;
+            font-weight: bold;
+
+        }
+        .info-btn{
+            height: 40px;
+            width : 120px;
+            background-color: #d6ccc2;
+            color:black;
+            border-radius: 15px;
+        
+            
+        }
+        .butons {
+            background-color: #edede9;
+            margin-inline: -40px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap :100px;
+        }
+
+        .person-info{
+            display: flex;
+            flex-direction: column;
+            background-color: #d6ccc2;
+            width: 400px;
+            height: 500px;
+            padding: 40px;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .cargo-input{
+            margin-top: 5px;
+            margin-bottom: 45px;
+            height: 30px;
+            border-radius: 5px;
+            border: 2px solid black;
+            padding: 2px;
+            padding-inline: 10px;
+            font-weight: bold;
+        }
+
+        .cargo-calc{
+            height: 40px;
+            width : 120px;
+            background-color: #d6ccc2;
+            color:black;
+            border-radius: 15px;
+        }
+
+        .cargo-e{
+            text-align: right;
+            font-size: 20px;
+            
+        }
+        
+        
+
+        
+
+        
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        
+            <h1>Kargo Projesi | DEMO </h1>
+            
+            <ul>
+                <li><a href="#"></a>DEMO</li>
+                <li><a href="#"></a>DEMO</li>
+                <li><a href="#"></a>DEMO</li>
+            </ul>
+        
+    </header>
+<br>
+    <main>
+        <div id="person-info">
+            
+        <label for="name">İsim Girin :</label> <br>
+            <input class="input-info" class="info" id="name-info" type="text" required>
+<br><br>
+        <label for="surname">Soyisim Girin :</label> <br>
+            <input class="input-info"  id="surname-info" type="text" required>
+<br><br>
+        <label for="telephone">Telefon No. Girin :</label> <br>
+            <input class="input-info"  id="tel-info" type="text" required>
+<br><br>
+        <label for="kargo-count">Kargo Adeti Girin :</label> <br>
+            <input  class="input-info" id="cargo-count-info" type="number" required>
+            
+        
+        <div class="butons">
+            <button class="info-btn" type="submit" id="save-btn">Bilgileri Kaydet</button>
+            <button class="info-btn" type="reset" id="delete-btn">Sil</button>
+        </div>
+    </div>  
+    <article id="personal-information">
+        <h1 id="welcome-project" style="font-size: 50px; color: #d6ccc2;">Welcome To Cargo Projects</h1></article>   
+</main>
+
+    
+    
+    <!-- For Personal İnformation -->
+    <script src="kargo-projesi_information.js"></script>
+    
+    
+    <script>
+         // Büyük Kargo Şirketi Projesi
+
+            // Kargo Ücret ve Kg Değişkenler
+            let ToplamKG = 0;
+            let FİYAT = 0;
+            let kargo_ekstra_ücretlendirme = 0;
+            let standart_teslim_suresi = 0;
+            
+
+            // Kargo Listeleme ve Objeleme Değişkenler
+            let kargo_içerik_listesi = [];
+            let kargolar = [];
+                  
+            
+
+
+            // Kullanici Bilgileri - 1 
+            // let kullanici_adi = prompt("Merhaba , İsim Girin");
+            // let soy_ad = prompt(`${kullanici_adi} Bey Soy İsminizi Girin`);
+            // let telefon_no = prompt(`${kullanici_adi} Bey , Telefon Numaranizi Girin`);
+            // let kargoAdet = Number(prompt(`${kullanici_adi} Bey ,Kargo Adetini Girin`));
+            
+
+
+            for(let i=0 ; i<kargoAdet; i++){
+                // kargo isim alma
+               //  let Kargo_name = prompt(`${i + 1}. Kargonuz Nedir ?`)
+
+                // Kargo İçeriği Alma 
+                // let kargo_içeriği_input = prompt(`${1 + i}. Kargonuzun İçeriği Nedir? (kati , Plastik , Evcil Hayvan, Sivi, Kirilacak Eşya) !Eğer Kargonuz Kati ise Hiçbir Ücret Alinmayacaktır!`)
+                kargo_içerik_listesi.push(kargo_içeriği_input);
+
+                // Kargo Kilogram alma
+                // let kargoKG = Number(prompt(` ${1 + i}.Kargonuzun Ağırlığın Sayi Cinsinden Girin`))
+                ToplamKG += kargoKG;
+                
+                // Genel Kargo Objesi
+                kargolar.push({ Kargo_No : `${i + 1}. Kargo`,
+                                Kargo_isim : `${Kargo_name} `,
+                                Kargo_Tür : kargo_içeriği_input,
+                                Kargo_Kg : kargoKG});
+            
+            };
+
+            
+            // Kargo Filtreleme İşlemleri - 2
+                    // İçerik Filtreleme
+            let kargo_içerik_filter = kargo_içerik_listesi.filter(  içerik => içerik =="Sivi" || içerik =="Plastik" ||
+                                                                    içerik =="Evcil Hayvan"   || içerik =="Kirilabilir Eşya"
+            );
+
+            kargo_ekstra_ücretlendirme = 10 * kargo_içerik_filter.length;
+
+
+             
+
+           
+
+            // Kargo Şirketi Ve Teslimat Seçimi  - 3  
+
+             // let kargoSirketi = prompt("Kargo Şirketinizi Seçin ('Yurtiçi Kargo','Aras Kargo', 'DHL Kargo' )");
+            console.log(kargoSirketi);
+            
+            // Hızlı Teslimat
+            if(isNaN(kargoSirketi)){
+            // let Teslimat_suresi = prompt(`Kargonuzun Standart Teslim süresi 3 gündür. Hizli Teslimat İçin " Hizli Teslimat " Yazin. ( Hizli Teslimat'ta Kargonuz 1 Günde Gelir)`);
+
+                const Teslimat_sure = (Teslimat_suresi) => (Teslimat_suresi === "Hizli Teslimat") ? 1 : 3;
+                standart_teslim_suresi = Teslimat_sure(Teslimat_suresi);
+                kargo_ekstra_ücretlendirme += (standart_teslim_suresi === 1) ? 50 : 0;
+                 
+            }
+                  
+            // YURTİÇİ KARGO
+                if(kargoSirketi =="Yurtiçi Kargo"){
+                    FİYAT = (ToplamKG >= 5) ? 120 : 70;
+                }
+            
+            // ARAS KARGO
+                else if(kargoSirketi == "Aras Kargo"){
+                    FİYAT = (ToplamKG < 5) ? 65 : 90;
+                }
+            
+            // DHL KARGO
+                else if(kargoSirketi == "DHL Kargo"){
+                
+                    // let dhl = Number(prompt("Kargonuz Yurtiçi ise (1) , Yurtdışı ise (2) Tuşlayın"));
+
+                        // DHL YURTİÇİ
+                        if(dhl == 1){
+                            FİYAT = (ToplamKG >= 5) ? 250 : 165;
+
+                        }
+
+                        // DHL YURTDIŞI
+                        else if(dhl == 2){
+                            let abd = prompt("Kargonuz Amerika'ya gidecekmi. evet / hayır");
+
+                            // USA
+                            if(abd == "evet"){
+                            FİYAT = (ToplamKG >= 5) ? 3500 : 2500;
+                            }
+                      
+                            // OTHER (Europe , Asia , Africa)
+                            else if(abd =="hayır"){
+                            FİYAT = (ToplamKG >= 5) ? 2000 : 1400;
+                
+                            }
+                            else{
+                            alert("DHL Yurtdişi Kargo İşlemlerinde Hata Oluştu!");
+                            }
+
+                }
+            }
+
+
+            // HATA MESAJLARI
+             else if(kargoSirketi === ""){
+                alert(`Kargo Firma Seçiminizle İlgili Hata Oluştu Tekrar Deneyin <- 404`);
+                       
+            } 
+             else if(kargoSirketi !== Number){
+                alert(`Kargo Firması Olarak Rakam Girdiniz Sayfayi yenileyin <- 404`)
+            }
+ 
+                
+
+            // Fiş - 4
+            let toplamOdenecek;
+                
+             
+            // Ücret Hesaplamalar
+            
+            // Yurtdışı Kargoları İçin Fiyatlandırma
+            if((kargoSirketi === "DHL Kargo") && (dhl === 2)){
+                toplamOdenecek = FİYAT;
+                toplamOdenecek += kargo_ekstra_ücretlendirme
+            }
+            
+            // Yurtiçi Kargoları İçin Fiyatlandırma
+            else if((kargoSirketi !== "DHL Kargo") || (dhl !== 2)){
+                toplamOdenecek = kargoAdet * FİYAT ;
+                toplamOdenecek += kargo_ekstra_ücretlendirme;   
+            }
+            else{
+                alert(`Kargo Ücretlendirme İşleminde Bir Hata Oluştu Tekrar Deneyin`);
+            }
+
+            
+                    if((toplamOdenecek > 0) && (kargoSirketi !== "") && (isNaN(kargoSirketi))){
+                        // Gönderici Bilgileri 
+                        alert(`Gönderici Bilgileri :
+                        İsim : ${kullanici_adi}
+                        Soy İsim : ${soy_ad} 
+                        Telefon No : ${telefon_no}`); 
+                       
+
+                        // Kargo Bilgileri / Firma Bilgileri / Ödeme 
+                        alert(`Kargo Bilgileri :
+                        Kargo Firmasi : ${kargoSirketi}
+                        Kargolar : ${kargolar}
+                        Kargo Adet : ${kargoAdet}
+                        Kargo Toplam Kg : ${ToplamKG}
+                    ---------------------------------------
+                        Toplam Tutar : ${toplamOdenecek}                    `)
+                        console.log(`
+                        Kargolar : 
+                        ${kargolar}`);                 
+                    }
+
+
+   /*  const name = document.querySelector('#name-info').value;
+    const surname = document.querySelector('#surname-info').value;
+    const tel_no = document.querySelector('#tel-info').value;
+    const cargo_count = document.querySelector('#cargo-count-info').value;   */
+/*         let input = document.querySelectorAll('.input-info');
+          for(let i=0; i<input.length; i++){
+           person_info.push(input[i].value);
+            const card_element = document.createElement('h4');
+            card_element.appendChild(document.createTextNode(`${info[i]} : ${person_info[i]}`));
+            card.appendChild(card_element); 
+    /* let info = ["Name","Surname","Telephone No.","Cargo Each"] *
+    /*     for(let i=0; i<info.length; i++){
+        const card_element = document.createElement('h4');
+        card_element.appendChild(document.createTextNode(`${info[i]} : ${person_info[i]}`));
+      card.appendChild(card_element);        
+/* let div = document.querySelector('#card'); 
+if((name === "") || (surname === "") || (tel_no === "") || (cargo_count === "")){
+    alert("Tüm Bilgileri Eksiksiz Doldurulmasi Gerekir");
+else if((!isNaN(name)) || (!isNaN(surname))){
+    alert("Hata Sayi Girişi Yapildi");
+    for(let i=0 ; i<person_info.length; i++){
+    document.querySelectorAll('.input-info')[i].value = "";
+else if(div === null){
+    main_tag.appendChild(card); 
+}
+else{
+    alert('Merhaba Bilgiler 1 kez Kaydedilebilir');
+    div.remove();  
+   for(let i=0 ; i<person_info.length; i++){
+        document.querySelectorAll('.input-info')[i].value = "";
+   }
+    
+
+
+
+} */
+
+
+
+
+
+
+
+
+
+
+
+                  
+                
+        
+
+        
+    
+    </script>
+</body>
+</html>
