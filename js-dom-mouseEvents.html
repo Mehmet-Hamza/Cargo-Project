@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Dom Mouse Events </title>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+<h1 id="h1"></h1>
+<div id="div">
+    box1
+</div>
+<button id="btn">button</button>
+
+    <script>
+        const btn = document.querySelector('#btn');
+        const div = document.querySelector('#div');
+
+        // click 
+       /*  btn.addEventListener('click',eventhand);
+        btn.addEventListener('click',eventhand); */
+
+      
+
+        // Double Click
+
+        /* btn.addEventListener('dblclick', eventhand); */
+
+        
+        // Mouse Down and Mouse Up
+       /*  btn.addEventListener('mousedown', eventhand);
+        btn.addEventListener('mouseup', eventhand); */
+
+
+        // MouseEnter And Mouse Leave
+       /*  btn.addEventListener('mouseenter', eventhand);
+        btn.addEventListener('mouseleave', eventhand); */
+
+
+        // MouseOver And MouseOut
+        /* btn.addEventListener('mouseleave', eventhand);
+        btn.addEventListener('mouseleave', eventhand); */
+
+        
+        // Mouse Move
+         btn.addEventListener('mousemove', eventhand);
+
+
+        const h1 = document.querySelector('#h1');
+        function eventhand(event){
+            console.log(`Event Type : ${event.type}`);
+
+            //subject
+            h1.textContent = `Mouse X : ${event.offsetX}
+            Mouse Y : ${event.offsetY}`
+        }
+    </script>
+</body>
+</html>
