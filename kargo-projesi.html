@@ -13,10 +13,73 @@
         padding: 20px;
         place-items: right;
         border-radius : 20px;
-        
+        display: flex;
+
+
         }
 
-        #card-header {
+    
+        #welcome-project{
+            font-size: 50px;
+            color: #d6ccc2;
+            
+        }
+        
+        .cargo-object{
+            margin-right: 10px; 
+        
+            
+        }
+        
+
+        #leftCard{
+            width: 50%;
+            height: 70%;
+           
+
+        }
+        .cargo-div{
+            display: flex;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            
+            gap:50px;
+
+             
+            
+        }
+
+        
+        
+        #rightCargoCard{
+            width:100%;
+            height: 100%;
+          
+            
+        }
+
+        .cargo_head_div{
+            width:100%;
+            height: 20%;
+          
+            display: flex;
+            
+            
+                
+        }
+
+        #rightCard{
+            width: 50%;
+            height: 70%;
+           
+            
+            
+            
+        
+            
+        }
+
+        .card-header {
             border-bottom: 2px solid black;
             padding-bottom: 15px;
         }
@@ -28,6 +91,7 @@
             margin: 0;
             padding: 0;
             font-family: arial;
+            
         }
 
     
@@ -43,6 +107,7 @@
             align-items: center;
             justify-content: space-around;
             box-shadow: -10px 1px 10px;
+            background: linear-gradient(360deg, #212529, #343a40);
         }
         ul{
             list-style: none;
@@ -53,22 +118,21 @@
             margin-right: 15px;
         }
 
-        main{
 
+
+        main{
+            margin-top: -20px;
             padding: 20px;
             width: 100%;
-            
             height: 100%;
             display: flex;
             justify-content: left;
-            
-            
-            background-color: #8C5A3C; 
+            background: linear-gradient(360deg, #212529, #343a40); 
         }
+        
         article{
-           /*  background-color: #8C5A3C; */
-          
-            background-color: #8C5A3C;
+           
+            background: linear-gradient(360deg, #212529, #343a40);
             margin-left: 30px;
             width : 800px;
             height : 500px;
@@ -147,7 +211,7 @@
             font-weight: bold;
         }
 
-        .cargo-calc{
+        .cargo-calc-Btn{
             height: 40px;
             width : 120px;
             background-color: #d6ccc2;
@@ -155,11 +219,31 @@
             border-radius: 15px;
         }
 
-        .cargo-e{
+        .cargo-count{
             text-align: right;
             font-size: 20px;
             
         }
+        .div_succes_card{
+            border-radius: 20px;
+            background-color: white;
+            width: 320px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 40px;
+            
+        }
+
+        .check_İmg{
+            width:150px;
+            height: 150px;
+            margin-bottom: 25px;
+        }
+
         
         
 
@@ -171,7 +255,7 @@
     </style>
 </head>
 <body>
-    <header>
+     <header>
         
             <h1>Kargo Projesi | DEMO </h1>
             
@@ -180,20 +264,22 @@
                 <li><a href="#"></a>DEMO</li>
                 <li><a href="#"></a>DEMO</li>
             </ul>
+            <img src="" alt="">
         
     </header>
-<br>
+
+    <br>
     <main>
         <div id="person-info">
             
         <label for="name">İsim Girin :</label> <br>
-            <input class="input-info" class="info" id="name-info" type="text" required>
+            <input class="input input-info" class="info" id="name-info" type="text" required>
 <br><br>
         <label for="surname">Soyisim Girin :</label> <br>
-            <input class="input-info"  id="surname-info" type="text" required>
+            <input class="input input-info"  id="surname-info" type="text" required>
 <br><br>
         <label for="telephone">Telefon No. Girin :</label> <br>
-            <input class="input-info"  id="tel-info" type="text" required>
+            <input class="input input-info"  id="tel-info" type="text" required>
 <br><br>
         <label for="kargo-count">Kargo Adeti Girin :</label> <br>
             <input  class="input-info" id="cargo-count-info" type="number" required>

@@ -5,62 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Javascript Dom Mouse Events </title>
     <style>
-        div{
+
+        .div{
             width: 300px;
             height: 300px;
             background-color: antiquewhite;
+            font-size: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:50px;
         }
     </style>
 </head>
 <body>
+
+<main>
 <h1 id="h1"></h1>
-<div id="div">
+<div class= "div" id="div">
     box1
 </div>
+
+<div class= "div" id="div2">
+    box2
+</div>
+</main>
 <button id="btn">button</button>
 
     <script>
         const btn = document.querySelector('#btn');
         const div = document.querySelector('#div');
+        const div2 = document.getElementById('div2')
 
-        // click 
-       /*  btn.addEventListener('click',eventhand);
-        btn.addEventListener('click',eventhand); */
-
-      
-
-        // Double Click
-
-        /* btn.addEventListener('dblclick', eventhand); */
-
+    // Click Event
+    function clicked(){
+        div.textContent = "clicked 😀";
+        div.style.backgroundColor = "LightGreen";
         
-        // Mouse Down and Mouse Up
-       /*  btn.addEventListener('mousedown', eventhand);
-        btn.addEventListener('mouseup', eventhand); */
+    }
+    div.addEventListener('click', clicked);
+
+    // Dbl Click Event
+    function dbclicked(){
+        div.innerHTML = "Double<br>Clicked 😀";
+        div.style.backgroundColor = "LightGray";
+    }
+    div.addEventListener('dblclick', dbclicked);
 
 
-        // MouseEnter And Mouse Leave
-       /*  btn.addEventListener('mouseenter', eventhand);
-        btn.addEventListener('mouseleave', eventhand); */
+    // Mouse Over Event
+    function mouseOver(){
+        div.innerHTML = "Mouse Over <br> Active😎";
+        div.style.backgroundColor = "LightBlue";
+        div.style.color = "white";
+    }
+    div.addEventListener('mouseover', mouseOver);
+
+    // Mouse Out Event
+    function mouseOut(){
+        div.textContent = "box1";
+        div.style.backgroundColor = "antiquewhite";
+        div.style.color = "black";
+    }
+    div.addEventListener('mouseout', mouseOut);
+
+    // MouseDown Event
+
+    function mouseDown(){
+        div.style.backgroundColor = "blue";
+        div.textContent = "Mouse Down act."
+
+    }
+    div.addEventListener('mousedown',mouseDown);
 
 
-        // MouseOver And MouseOut
-        /* btn.addEventListener('mouseleave', eventhand);
-        btn.addEventListener('mouseleave', eventhand); */
-
+    // Mouse Up Event
+    function mouseUp(){
         
-        // Mouse Move
-         btn.addEventListener('mousemove', eventhand);
+        console.log("mouseup");
+    }
+    div.addEventListener('mouseup', mouseUp);
 
 
-        const h1 = document.querySelector('#h1');
-        function eventhand(event){
-            console.log(`Event Type : ${event.type}`);
-
-            //subject
-            h1.textContent = `Mouse X : ${event.offsetX}
-            Mouse Y : ${event.offsetY}`
+    // ---------- KEY  EVENTS ---------- // 
+    
+    // Keydown Event
+     function keyDown(eventt){
+        if(eventt.key == 'Enter'){
+            document.body.style.backgroundColor = "Pink";
         }
-    </script>
+        else if(eventt.key == "CapsLock"){
+            document.body.style.backgroundColor = "white";
+        }
+    }
+    document.addEventListener('keydown', keyDown);
+
+    
+    // Keyup Event
+/*
+    function keyUp(eventt){
+        console.log(`Event KeyUp : ${eventt.key}`);
+    }
+    document.addEventListener('keyup', keyUp); */
+
+
+
+    // Function Subject 
+
+    
+
+</script>
 </body>
 </html>
